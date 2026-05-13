@@ -1,17 +1,13 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Nunito } from "next/font/google";
 import "./globals.css";
 import NavigationBar from "@/components/Navbar";
 import FooterPage from "@/components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const NunitoSans = Nunito({
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+
 
 export const metadata = {
   title: "Wanderlust Travel",
@@ -22,7 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${NunitoSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col container mx-auto">
         <NavigationBar />

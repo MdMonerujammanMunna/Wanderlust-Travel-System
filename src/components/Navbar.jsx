@@ -8,7 +8,7 @@ const NavigationBar = () => {
             <div className="flex justify-between items-center px-10 py-4 font-medium">
                 <ul className="flex items-center gap-5">
                     <li><Link href="/">Home</Link></li>
-                    <li><Link href="/">Destinations</Link></li>
+                    <li><Link href="/Destination">Destinations</Link></li>
                     <li><Link href="/">My Bookings</Link></li>
                     <li><Link href="/">Admin</Link></li>
                     <li><Link href="/AddDestinationPage">Add Destination</Link></li>
