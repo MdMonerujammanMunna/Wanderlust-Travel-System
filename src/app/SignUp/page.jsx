@@ -1,6 +1,7 @@
 "use client"
 import { authClient } from '@/lib/auth-client';
 import { FieldError, Input, Label, TextField, Select, ListBox, TextArea, Button, Card } from '@heroui/react';
+import Link from 'next/link';
 import { FcGoogle } from "react-icons/fc";
 
 
@@ -14,8 +15,18 @@ const SignUpLoging = () => {
             email: userData.Email,
             password: userData.Password,
         });
-        console.log({ data, error })
+        if (data) {
+            alert(` ${userData.Name}`)
+        }
+        else if (error) {
+            alert(` ${error.message}`)
+        }
     }
+    const signIn = async () => {
+        const data = await authClient.signIn.social({
+            provider: "google",
+        });
+    };
     return (
         <><div className="py-20">
             <div className="text-center">
@@ -56,10 +67,25 @@ const SignUpLoging = () => {
                     <Button
                         type="submit"
                         variant="outline"
-                        className=" rounded-none w-full bg-cyan-500 text-white mt-4 font-medium">
+                        className=" rounded-none w-full bg-[#15A1BF] text-white mt-4 font-medium">
                         Create Account
                     </Button>
                 </form>
+
+                <div className="flex w-full gap-4 items-center text-[#6C696D] my-4">
+                    <hr className='w-full border-2' />
+                    <span className='text-xl text-nowrap'>Or sign up with</span>
+                    <hr className='w-full border-2' />
+                </div>
+
+                <Button variant='outline' onClick={signIn} className="flex items-center gap-4 w-full font-medium justify-center border-2">
+                    <FcGoogle />
+                    <span>Sign Up With Google</span>
+                </Button>
+
+                <div className="text-[18px] text-[#6C696D] text-center mt-5">
+                    <p>Already have an account? <Link href="/LoginPage" className='font-semibold text-[#15A1BF]'>Sign In</Link></p>
+                </div>
             </Card>
 
         </div >
