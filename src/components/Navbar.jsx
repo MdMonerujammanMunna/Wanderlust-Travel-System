@@ -18,8 +18,8 @@ const NavigationBar = () => {
                 </div>
                 <ul className="flex items-center gap-5">
                     <li><Link href="/" className="flex items-center gap-1"><MdPerson /> Profile</Link></li>
-                    <li><Link href="/">Login</Link></li>
-                    <li><Link href="/">Sign Up</Link></li>
+                    <li><Link href="/LoginPage">Login</Link></li>
+                    <li><Link href="/SignUp">Sign Up</Link></li>
                 </ul>
             </div>
         </>
