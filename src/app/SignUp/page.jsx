@@ -3,6 +3,7 @@ import { authClient } from '@/lib/auth-client';
 import { FieldError, Input, Label, TextField, Select, ListBox, TextArea, Button, Card } from '@heroui/react';
 import Link from 'next/link';
 import { FcGoogle } from "react-icons/fc";
+import { redirect } from 'next/navigation';
 
 
 const SignUpLoging = () => {
@@ -17,6 +18,7 @@ const SignUpLoging = () => {
         });
         if (data) {
             alert(` ${userData.Name}`)
+            redirect('/LoginPage');
         }
         else if (error) {
             alert(` ${error.message}`)
@@ -28,67 +30,68 @@ const SignUpLoging = () => {
         });
     };
     return (
-        <><div className="py-20">
-            <div className="text-center">
-                <h1 className='text-5xl font-bold mb-2'>Create Account</h1>
-                <p className='text-xl text-[#6C696D]'>Start your adventure with Wanderlust</p>
-            </div>
+        <>
+            <div className="py-20 px-10">
+                <div className="text-center">
+                    <h1 className='text-5xl font-bold mb-2'>Create Account</h1>
+                    <p className='text-xl text-[#6C696D]'>Start your adventure with Wanderlust</p>
+                </div>
 
-            <Card className="shadow-2xl w-4xl mx-auto p-10  mt-10">
-                <form onSubmit={SubmitFrom} className='space-y-4'>
-                    {/*  Name */}
-                    <div className="">
-                        <TextField name="Name" isRequired className={"space-y-2"}>
-                            <Label className='text-[18px]'>Full Name</Label>
-                            <Input type='text' placeholder="Enter your name" className="rounded-xl py-3 px-5 text-[18px] bg-[#F8FAFC]" />
+                <Card className="shadow-2xl max-w-4xl mx-auto p-10  mt-10">
+                    <form onSubmit={SubmitFrom} className='space-y-4'>
+                        {/*  Name */}
+                        <div className="">
+                            <TextField name="Name" isRequired className={"space-y-2"}>
+                                <Label className='text-[18px]'>Full Name</Label>
+                                <Input type='text' placeholder="Enter your name" className="rounded-xl py-3 px-5 text-[18px] bg-[#F8FAFC]" />
+                                <FieldError />
+                            </TextField>
+                        </div>
+
+                        {/* Email */}
+                        <TextField name="Email" isRequired className={"space-y-2"}>
+                            <Label className='text-[18px]'>Email Address</Label>
+                            <Input type='email' placeholder="Enter your email" className="rounded-xl py-3 px-5 text-[18px] bg-[#F8FAFC]" />
                             <FieldError />
                         </TextField>
+                        {/* Password */}
+                        <TextField name="Password" isRequired className={"space-y-2"}>
+                            <Label className='text-[18px]'>Password</Label>
+                            <Input type='password' placeholder="Create a password" className="rounded-xl py-3 px-5 text-[18px] bg-[#F8FAFC]" />
+                            <FieldError />
+                        </TextField>
+                        {/* Password */}
+                        <TextField name="Password" isRequired className={"space-y-2"}>
+                            <Label className='text-[18px]'>Confirm Password</Label>
+                            <Input type='password' placeholder="Confirm your password" className="rounded-xl py-3 px-5 text-[18px] bg-[#F8FAFC]" />
+                            <FieldError />
+                        </TextField>
+                        {/* button */}
+                        <Button
+                            type="submit"
+                            variant="outline"
+                            className=" w-full bg-[#15A1BF] text-white mt-4 font-medium">
+                            Create Account
+                        </Button>
+                    </form>
+
+                    <div className="flex w-full gap-4 items-center text-[#6C696D] my-4">
+                        <hr className='w-full border-2' />
+                        <span className='text-xl text-nowrap'>Or sign up with</span>
+                        <hr className='w-full border-2' />
                     </div>
 
-                    {/* Email */}
-                    <TextField name="Email" isRequired className={"space-y-2"}>
-                        <Label className='text-[18px]'>Email Address</Label>
-                        <Input type='email' placeholder="Enter your email" className="rounded-xl py-3 px-5 text-[18px] bg-[#F8FAFC]" />
-                        <FieldError />
-                    </TextField>
-                    {/* Password */}
-                    <TextField name="Password" isRequired className={"space-y-2"}>
-                        <Label className='text-[18px]'>Password</Label>
-                        <Input type='password' placeholder="Create a password" className="rounded-xl py-3 px-5 text-[18px] bg-[#F8FAFC]" />
-                        <FieldError />
-                    </TextField>
-                    {/* Password */}
-                    <TextField name="Password" isRequired className={"space-y-2"}>
-                        <Label className='text-[18px]'>Confirm Password</Label>
-                        <Input type='password' placeholder="Confirm your password" className="rounded-xl py-3 px-5 text-[18px] bg-[#F8FAFC]" />
-                        <FieldError />
-                    </TextField>
-                    {/* button */}
-                    <Button
-                        type="submit"
-                        variant="outline"
-                        className=" rounded-none w-full bg-[#15A1BF] text-white mt-4 font-medium">
-                        Create Account
+                    <Button variant='outline' onClick={signIn} className="flex items-center gap-4 w-full font-medium justify-center border-2">
+                        <FcGoogle />
+                        <span>Sign Up With Google</span>
                     </Button>
-                </form>
 
-                <div className="flex w-full gap-4 items-center text-[#6C696D] my-4">
-                    <hr className='w-full border-2' />
-                    <span className='text-xl text-nowrap'>Or sign up with</span>
-                    <hr className='w-full border-2' />
-                </div>
+                    <div className="text-[18px] text-[#6C696D] text-center mt-5">
+                        <p>Already have an account? <Link href="/LoginPage" className='font-semibold text-[#15A1BF]'>Sign In</Link></p>
+                    </div>
+                </Card>
 
-                <Button variant='outline' onClick={signIn} className="flex items-center gap-4 w-full font-medium justify-center border-2">
-                    <FcGoogle />
-                    <span>Sign Up With Google</span>
-                </Button>
-
-                <div className="text-[18px] text-[#6C696D] text-center mt-5">
-                    <p>Already have an account? <Link href="/LoginPage" className='font-semibold text-[#15A1BF]'>Sign In</Link></p>
-                </div>
-            </Card>
-
-        </div >
+            </div >
         </>
     );
 };
