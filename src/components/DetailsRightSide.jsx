@@ -1,4 +1,5 @@
-import { Button, Card } from "@heroui/react";
+"use client"
+import { Button, Card, DateField } from "@heroui/react";
 import Link from "next/link";
 
 import { FaArrowRightToBracket } from "react-icons/fa6";
@@ -14,7 +15,11 @@ const DetailsRightSide = ({ singledata }) => {
                     <p>per person</p>
 
                     <div className="p-4 w-full bg-[#F8FAFC] text-[18px] mt-13">
-                        {departureDate}
+                        <DateField className="w-[256px]" name="date">
+                            <DateField.Group>
+                                <DateField.Input>{(segment) => <DateField.Segment segment={segment} />}</DateField.Input>
+                            </DateField.Group>
+                        </DateField>
                     </div>
                     <hr className=" my-5" />
                     <Link href="">

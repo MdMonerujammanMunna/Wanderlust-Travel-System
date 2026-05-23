@@ -1,13 +1,12 @@
 
 import { IoMdArrowRoundBack } from "react-icons/io";
-import { RiEdit2Fill } from "react-icons/ri";
+
 
 
 
 import Link from "next/link";
-import { Button } from "@heroui/react";
-import { redirect } from "next/dist/server/api-utils";
 import { DeleteModal } from "./DeleteModal";
+import { EditModal } from "./EditModal";
 
 const DetailsButton = ({ singledata }) => {
     const { _id } = singledata
@@ -19,10 +18,7 @@ const DetailsButton = ({ singledata }) => {
                     <span>Back to Destinations</span>
                 </Link>
                 <div className="flex items-center gap-2">
-                    <Button className=" flex items-center text-xl">
-                        <RiEdit2Fill className="h-6 w-6" />
-                        <span>Edit</span>
-                    </Button>
+                    <EditModal />
                     <DeleteModal singledata={singledata} />
                 </div>
             </div>

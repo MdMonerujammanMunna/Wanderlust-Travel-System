@@ -25,14 +25,16 @@ const DetailsLeftSide = ({ singledata }) => {
                 <div className="mt-10">
                     <h1 className="text-3xl font-medium mb-5">Highlights</h1>
                     <p className="text-[#6C696D] text-[18px] text-justify lg:text-left">{description}</p>
-                    <div className="mt-5 text-[#6C696D] grid md:grid-cols-2 gap-4 ">
+
+                    {/* <div className="mt-5 text-[#6C696D] grid md:grid-cols-2 gap-4 ">
                         {highlights.map((highlight, index) =>
                             <div key={index} className="gap-4 flex items-center text-xl font-bold">
                                 <PiArrowCircleUpRightFill className="text-green-500" />
                                 <h1 className="text-[18px] font-semibold">{highlight}</h1>
                             </div>
                         )}
-                    </div>
+                    </div> */}
+
                 </div>
             </div>
         </>
